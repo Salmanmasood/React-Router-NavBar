@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Table from "./Table/Table";
-
+import {Link} from 'react-router-dom'
 
 class EmployeeGrid extends Component {
 
@@ -41,7 +41,7 @@ state={
       ],
       columns:[
         {id:1,title:"Id",path:"_id"},
-        {id:2,title:"Name",path:"name"},
+        {id:2,title:"Name",path:"name",content:employee=>(<Link to={`/Employee/${employee._id}`}>{employee.name}</Link>)},
         {id:3,title:"Department",path:"department"},
         {id:4,title:"Salary",path:"salary"},
         {id:6,path:"Delete",content:employee=>(<button className="btn btn-sm btn-danger" onClick={() => this .handleDelete(employee)}>x</button> )}
