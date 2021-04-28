@@ -14,25 +14,18 @@ state={
 }
 
 schema={
-  username:Joi.string().required(),
-  password:Joi.string().required()
+  username:Joi.string().required().label('User Name'),
+  password:Joi.string().required().label('Password')
 }
 
 
 
 validate=()=>{
 const result=Joi.validate(this.state.account,this.schema,{abortEarly:false});
-console.log(result);
-  const errors={};
-  const {account}=this.state;
-  if(account.username.trim()===''){
-errors.username="User is Required";
-  }
-  if(account.password.trim()===''){
-    errors.password="password is Required";
- }
-      
-  return Object.keys(errors).length===0?null:errors;
+const errors={};
+if(!result.error) return null;
+for(let item of result.error.details ) errors[item.path[0]]=item.message;
+return errors;
 }
 
 validProperty=({name,value})=>{
