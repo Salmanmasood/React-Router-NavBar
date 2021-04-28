@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import  Input  from "./Inputs/Input";
+import Joi from  'joi-browser';
 
 class LoginForm extends Component {
 
 state={
  
     account:{
-      userName:"",
+      username:"",
       password:""
     },
     errors:{}
 }
 
+schema={
+  username:Joi.string().required(),
+  password:Joi.string().required()
+}
+
+
+
 validate=()=>{
+const result=Joi.validate(this.state.account,this.schema,{abortEarly:false});
+console.log(result);
   const errors={};
   const {account}=this.state;
-  if(account.userName.trim()===''){
-errors.userName="User is Required";
+  if(account.username.trim()===''){
+errors.username="User is Required";
   }
   if(account.password.trim()===''){
     errors.password="password is Required";
@@ -26,7 +36,7 @@ errors.userName="User is Required";
 }
 
 validProperty=({name,value})=>{
-if(name==='userName')
+if(name==='username')
 {
 if(value.trim()==='') return 'username is required';
 }
@@ -74,7 +84,7 @@ else
      <form onSubmit={this.handleSubmit}>
      
      
-     <Input name="userName" label="User Name" value={account.userName} onChange={this.handleChange} error={errors.userName}/>
+     <Input name="username" label="User Name" value={account.username} onChange={this.handleChange} error={errors.username}/>
       
      <Input name="password" label="Password" value={account.password} onChange={this.handleChange} error={errors.password}/>
       
