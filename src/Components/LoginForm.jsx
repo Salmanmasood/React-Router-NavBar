@@ -30,15 +30,11 @@ return errors;
 }
 
 validProperty=({name,value})=>{
-if(name==='username')
-{
-if(value.trim()==='') return 'username is required';
-}
-if(name==='password')
-{
-  if(value.trim()==='') return 'password is required';
-}
 
+  const obj={[name]:value};
+  const schema={[name]:this.schema[name]};
+  const {error}=Joi.validate(obj,schema);
+  return error?error.details.message:null;
 
 }
 handleSubmit=e=>{
@@ -84,7 +80,7 @@ else
       
 
 
-     <button className="btn btn-primary">Login</button>
+     <button disabled={this.validate()} className="btn btn-primary">Login</button>
      </form>
 
       </div>
