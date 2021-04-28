@@ -20,11 +20,12 @@ schema={
 
 
 
-validate=()=>{
-const result=Joi.validate(this.state.account,this.schema,{abortEarly:false});
+validate=()=>{ 
+const option=  {abortEarly:false};
+const {error}=Joi.validate(this.state.account,this.schema,option);
 const errors={};
-if(!result.error) return null;
-for(let item of result.error.details ) errors[item.path[0]]=item.message;
+if(!error) return null;
+for(let item of error.details ) errors[item.path[0]]=item.message;
 return errors;
 }
 
