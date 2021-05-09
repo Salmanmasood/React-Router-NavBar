@@ -6,6 +6,8 @@ import {Route,Redirect,Switch} from 'react-router-dom'
 import NavBar from "./Components/NavBar/NavBar";
 import EmployeeForm from "./Components/EmployeeForm";
 import LoginForm from "./Components/LoginForm";
+import RegisterForm from "./Components/RegisterForm";
+
 
 import NotFound  from "./Components/NotFound";
 
@@ -27,6 +29,7 @@ class App extends Component {
  <Switch> 
 
     <Route path="/Login"  component={LoginForm}/>
+    <Route path="/Register"  component={RegisterForm}/>
     <Route path="/Movies" render={props => <MovieGrid setClass="table table-bordered" {...props} />}/>
     <Route path="/Employees"  render={props => <EmployeeGrid setClass="table table-bordered" {...props} />}/>
     <Route path="/Employee/:id"  component={EmployeeForm}/>
