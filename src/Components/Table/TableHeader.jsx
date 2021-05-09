@@ -21,7 +21,8 @@ class  TableHeader extends Component {
     if(sortColumn.order==="asc") return <i className="fa fa-sort-asc"/>;
     return <i className="fa fa-sort-desc"/>
   }
-    
+
+
     render() { 
       console.log(this.props.columns);
         return (

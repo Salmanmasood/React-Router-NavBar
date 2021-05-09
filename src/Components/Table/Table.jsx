@@ -9,7 +9,7 @@ import _ from "lodash";
 class Table extends Component {
     state = {  
           sortColumn:{path:'title',order:'asc'},
-          pageSize: 2,
+          pageSize: 7,
           currentPage: 1
 
              }

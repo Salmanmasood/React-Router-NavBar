@@ -7,8 +7,6 @@ import NavBar from "./Components/NavBar/NavBar";
 import EmployeeForm from "./Components/EmployeeForm";
 import LoginForm from "./Components/LoginForm";
 import RegisterForm from "./Components/RegisterForm";
-
-
 import NotFound  from "./Components/NotFound";
 
 
